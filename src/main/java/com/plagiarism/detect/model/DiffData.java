@@ -1,20 +1,28 @@
 package com.plagiarism.detect.model;
 
-public class DiffData {
+import java.util.HashMap;
+import java.util.Map;
 
-	private String[] synonyms = null;
+public class DiffData {
+	
+	/*
+	 * model object to store all the user input data
+	 */
+
+	private Map<String, String> synonyms;
 	private String[] fileFirst;
 	private String[] fileSecond;
 	private int tupleSize;
 
 	public DiffData() {
+		synonyms = new HashMap<>();
 	}
 
-	public String[] getSynonyms() {
+	public Map<String, String> getSynonyms() {
 		return synonyms;
 	}
 
-	public void setSynonyms(String[] synonyms) {
+	public void setSynonyms(Map<String, String> synonyms) {
 		this.synonyms = synonyms;
 	}
 
