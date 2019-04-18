@@ -26,33 +26,35 @@ public class PlagiarismDetectorService {
 
 	}
 
-	public void detectPlagiarism(boolean isFileSameSizeFlag) {
+	public void detectPlagiarism(boolean detectOnSameFileSize) {
 
-		if (diffData.getTupleSize() > diffData.getFileFirst().length) {
+		int minLen = Math.min(diffData.getFileFirst().length, diffData.getFileSecond().length);
+		if (diffData.getTupleSize() > minLen) {
 			System.out.println("N tuple size is greater than the file size...");
 			return;
 		}
-		
+
 		/*
-		 * Assuming that the plagiarism check should happens if and only if the two files that are of the same size
+		 * Assuming that the plagiarism check should happens if and only if the two
+		 * files that are of the same size
 		 */
-		
-		if (isFileSameSizeFlag && diffData.getFileFirst().length != diffData.getFileSecond().length) {
+
+		if (detectOnSameFileSize && diffData.getFileFirst().length != diffData.getFileSecond().length) {
 			System.out.println("Mismatch in input file size observed, cannot proceed with plagiarism detection");
 			return;
 		}
-		
+
 		// invoking NTuple algorithm
 		NTupleAlgorithm alg = new NTupleAlgorithm(diffData.getTupleSize());
 		double percentDetected = alg.compareFiles(diffData.getFileFirst(), diffData.getFileSecond());
-		
+
 		System.out.println();
-		
+
 		System.out.println("**************************************");
 		String message = String.format("Plagiarism observed to be at: %.3f percent", percentDetected);
 		System.out.println(message);
 		System.out.println("**************************************");
-		
+
 		System.out.println();
 	}
 

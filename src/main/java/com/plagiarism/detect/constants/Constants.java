@@ -6,7 +6,7 @@ public class Constants {
 	 */
 
 	public static final Integer TUPLE_SIZE = 3; // set default tuple size
-	public static final boolean isSameFileSizeFlag = false; // set flag to check is the file contents need to be the
+	public static final boolean detectOnSameFileSize = false; // set flag to check is the file contents need to be the
 															// same
 
 }

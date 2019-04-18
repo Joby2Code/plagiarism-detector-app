@@ -35,7 +35,7 @@ public class PlagiarismDetectorApp {
 	void detectPlagiarism() {
 		PlagiarismDetectorService service = new PlagiarismDetectorService();
 		service.parseSysArgs(mainArgs);
-		service.detectPlagiarism(Constants.isSameFileSizeFlag);
+		service.detectPlagiarism(Constants.detectOnSameFileSize);
 	}
 
 	void handleInputArgs(String args[]) {
